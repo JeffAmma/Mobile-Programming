@@ -36,9 +36,17 @@ public class MainActivity extends AppCompatActivity {
 
         Canvas canvas = new Canvas(bmCircle);
         Paint paint = new Paint();
-        paint.setColor(Color.RED);
+        Random random =new Random();
+        int rNum = random.nextInt(3);
+
+        paint.setColor(Color.RED+rNum*100);
+
         paint.setStrokeWidth(10);
-        canvas.drawCircle(r, r, r, paint);
+        for ( int j =0; j<3 ;j++) {
+            for (int i = 0; i<3; i++) {
+                canvas.drawCircle(r+2*r*i, r+2*r*j, r, paint);
+            }
+        }
         imageView.setImageBitmap(bmCircle);
     }
     void draw9Text(Bitmap bmText) {
