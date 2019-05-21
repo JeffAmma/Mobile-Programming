@@ -1,0 +1,62 @@
+public class MainActivity extends AppCompatActivity {
+
+    ImageView imageView;
+    Button buttonCircle;
+    Button buttonText;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+        imageView = findViewById(R.id.imageView);
+        buttonCircle  = findViewById(R.id.buttonCircle);
+        buttonText  = findViewById(R.id.buttonText);
+
+        buttonCircle.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Bitmap bitmap = Bitmap.createBitmap(
+                        imageView.getWidth(), imageView.getHeight(), Bitmap.Config.ARGB_8888);
+                draw9Circle(bitmap);
+            }
+        });
+
+        buttonText.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Bitmap bitmap = Bitmap.createBitmap(
+                        imageView.getWidth(), imageView.getHeight(), Bitmap.Config.ARGB_8888);
+                draw9Text(bitmap);
+            }
+        });
+    }
+    void draw9Circle(Bitmap bmCircle) {
+        float r = imageView.getWidth() / 6;
+
+        Canvas canvas = new Canvas(bmCircle);
+        Paint paint = new Paint();
+        paint.setColor(Color.RED);
+        paint.setStrokeWidth(10);
+        canvas.drawCircle(r, r, r, paint);
+        imageView.setImageBitmap(bmCircle);
+    }
+    void draw9Text(Bitmap bmText) {
+        float r = imageView.getWidth() / 6;
+        Random random =new Random();
+
+        Canvas canvas = new Canvas(bmText);
+        Paint paint = new Paint();
+        paint.setColor(Color.RED);
+        paint.setStrokeWidth(10);
+        paint.setTextSize(100);
+        for ( int j =0; j<3 ;j++) {
+            for (int i = 0; i<3; i++) {
+                int rNum = random.nextInt(9);
+                canvas.drawText(String.valueOf(rNum), r+2*r*i, r+2*r*j, paint);
+            }
+        }
+
+        imageView.setImageBitmap(bmText);
+    }
+}
