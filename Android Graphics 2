@@ -31,19 +31,22 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
+
+    int[] colorNum = {Color.RED, Color.GREEN, Color.BLACK, Color.WHITE, Color.GRAY, Color.YELLOW,Color.CYAN, Color.DKGRAY};
+
     void draw9Circle(Bitmap bmCircle) {
         float r = imageView.getWidth() / 6;
 
         Canvas canvas = new Canvas(bmCircle);
         Paint paint = new Paint();
         Random random =new Random();
-        int rNum = random.nextInt(3);
 
-        paint.setColor(Color.RED+rNum*100);
 
         paint.setStrokeWidth(10);
         for ( int j =0; j<3 ;j++) {
             for (int i = 0; i<3; i++) {
+                int rNum = random.nextInt(8);
+                paint.setColor(colorNum[rNum]);
                 canvas.drawCircle(r+2*r*i, r+2*r*j, r, paint);
             }
         }
@@ -67,4 +70,6 @@ public class MainActivity extends AppCompatActivity {
 
         imageView.setImageBitmap(bmText);
     }
+}
+
 }
