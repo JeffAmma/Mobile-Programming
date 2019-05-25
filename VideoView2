@@ -63,7 +63,7 @@ public class MainActivity extends AppCompatActivity {
         videoView.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
             @Override
             public void onCompletion(MediaPlayer mp) {
-                Toast.makeText(getApplicationContext(), "Playback completedd", Toast.LENGTH_LONG).show();
+                Toast.makeText(getApplicationContext(), "Playback completed!!!", Toast.LENGTH_LONG).show();
                 videoView.seekTo(1);
             }
         });
